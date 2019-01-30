@@ -8,9 +8,10 @@ import actions from './actions/action.js';
 class App extends Component {
 	constructor(props){
 		super(props);
-		this.updateHoverState  = this.updateHoverState .bind(this);
+		
 		this.removeTitle = this.removeTitle.bind(this);
 		this.addToMyList = this.addToMyList.bind(this);
+		this.isHovered = this.isHovered.bind(this);
 	}
 
 	compomentDidMount(){
@@ -18,9 +19,19 @@ class App extends Component {
 		dispatch(actions.getAllTitles);
 	}
 
-	updateHoverState(filter){
-		const { dispatch } = this.props;
-		dispatch(actions.setVisibilityFilter(filter));
+	isHovered(title){
+		const { titleList } = this.props;
+		for(let i=0; i<titleList.mylist.length; i++){
+			if(title === titleList.mylist[i].title){
+				return true;
+			}
+		}
+		for(let i=0; i<titleList.recommendations.length; i++){
+			if(title === titleList.recommendations[i].title){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	removeTitle(title, id, img){
@@ -44,17 +55,15 @@ class App extends Component {
 						{
 							this.props.titleList.mylist.map((title) => {
 								return (
-									<div className="title">
-										<List 
-											key={title.id}
-											id={title.id}
-											title={title.title}
-											img={title.img}
-											listType='mylist'
-											updateHoverState={this.updateHoverState}
-											removeTitle={this.removeTitle}
-										/>
-									</div>
+									<List 
+										key={title.title}
+										id={title.id}
+										title={title.title}
+										img={title.img}
+										listType='mylist'
+										hover={this.isHovered}
+										removeTitle={this.removeTitle}
+									/>
 								)
 							})
 						}
@@ -64,17 +73,15 @@ class App extends Component {
 						{
 							this.props.titleList.recommendations.map((title) => {
 								return (
-									<div className="title">
-										<List 
-											key={title.id}
-											id={title.id}
-											title={title.title}
-											img={title.img}
-											listType='recommendations'
-											updateHoverState={this.updateHoverState}
-											addToMyList={this.addToMyList}
-										/>
-									</div>
+									<List 
+										key={title.title}
+										id={title.id}
+										title={title.title}
+										img={title.img}
+										listType='recommendations'
+										hover={this.isHovered}
+										addToMyList={this.addToMyList}
+									/>
 								)
 							})
 						}
