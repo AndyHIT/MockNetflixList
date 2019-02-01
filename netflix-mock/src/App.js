@@ -50,6 +50,25 @@ class App extends Component {
 		return (
 			<div className="App">
 				<div className="container">
+					<img className="logo" src='https://assets.nflxext.com/en_us/pages/wiplayer/logo_v3.svg' alt="NetFlix" />
+					{/*<h2 className="list-header">My List</h2>
+					<div className="list-container">
+						{
+							this.props.titleList.myList.map((title) => {
+								return (
+									<List 
+										key={title.title}
+										id={title.id}
+										title={title.title}
+										img={title.img}
+										listType='mylist'
+										hover={this.isHovered}
+										removeTitle={this.removeTitle}
+									/>
+								)
+							})
+						}
+					</div>*/}
 					<h2 className="list-header">My List</h2>
 					<div className="list-container">
 						{

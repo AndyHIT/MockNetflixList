@@ -1,38 +1,55 @@
-.App {
-	text-align: center;
-	.container{
-		width: 90%;
-		margin: 10px auto;
-		.list-header{
-			display: flex;
-			margin-left: 10px;
-		}
-		.list-container{			
-			display: flex;
-			justify-content: flex-start;
-			flex-direction: row;
-			.title{					
-				position: relative;
-				margin: 20px 10px;
-				.list-image:hover{
-					cursor: pointer;
-					/*opacity: 0.5;*/
-				}
-				.action-button{
-					display: none;
-				    border: 1px solid #ccc;
-				    border-radius: 4px;
-				    padding: 10px;
-				    text-align: center;
-				    width: 100px;
-				    margin: 10px auto;
-				    background-image: linear-gradient(180deg, #ccc 0, #fff);
-				    &.add, &.remove{
-				    	display: block;
-				    }
-				    &:hover{
-				    	cursor: pointer;
-						opacity: 0.5;
+body{
+	margin: 0;
+	font-family: sans-serif;
+	.App {
+		text-align: center;
+		background-color: #141414;
+		.container{
+			width: 90%;
+			min-height: 1200px;
+			margin: 0 auto;
+			.logo{
+				width: 100px;
+				display: flex;
+				padding-top: 30px;
+			}
+			.list-header{
+				display: flex;
+				color: #fff;
+				font-size: 36px;
+			}
+			.list-container{			
+				display: flex;
+				justify-content: flex-start;
+				flex-direction: row;
+				height: 320px;
+				.title{					
+					position: relative;
+					margin: 0 3px;
+					.list-image:hover{
+						cursor: pointer;
+					}
+					.list-title{
+						color: #fff;
+						margin-bottom: 10px;
+					}
+					.action-button{
+						display: none;
+					    width: 100px;
+					    margin: 10px auto;
+					    border: 1px solid #ccc;
+					    border-radius: 4px;
+					    padding: 10px;
+					    text-align: center;
+					    font-size: 12px;
+					    background-image: linear-gradient(180deg, #ccc 0, #fff);
+					    &.add, &.remove{
+					    	display: block;
+					    }
+					    &:hover{
+					    	cursor: pointer;
+							opacity: 0.5;
+						}
 					}
 				}
 			}

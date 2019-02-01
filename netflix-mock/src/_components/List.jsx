@@ -21,20 +21,20 @@ class List extends React.Component {
 				onMouseEnter={this.toggleHover}
 				onMouseLeave={this.toggleHover}
 			>
+				<div className='list-title'>{this.props.title}</div>
 				<img 
 					className='list-image' 
 					alt={this.props.title}
 					src={this.props.img} 
 				/>
-				<div className='list-title'>{this.props.title}</div>
 				<div 
 					className={`${this.props.listType==='mylist'&&this.state.hover ? 'remove' : ''} action-button`}
 					onClick={() => {this.props.removeTitle(this.props.title, this.props.id, this.props.img)}}
-				>Remove</div>
+				>REMOVE FROM MY LIST</div>
 				<div 
 					className={`${this.props.listType==='recommendations'&&this.state.hover ? 'add' : ''} action-button`}
 					onClick={() => {this.props.addToMyList(this.props.id, this.props.title, this.props.img)}}
-				>Add</div>
+				>+ My List</div>
 			</div>
 		)
 	}
