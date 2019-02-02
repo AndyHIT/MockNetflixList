@@ -3,14 +3,35 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class List extends React.Component {
-	state = {
-		hover: false,
+	constructor(){
+		super();
+		this.state = {
+			hover: false,
+			overWhich: ''
+		}
+		this.mouseIn = this.mouseIn.bind(this);
+		this.mouseOut = this.mouseOut.bind(this);
+		this.isShown = this.isShown.bind(this);
 	}
-	toggleHover = () => {
+	
+	mouseIn = (titleName) => {
 		this.setState({
-			hover: !this.state.hover
+			hover: true,
+			overWhich: titleName
 		})
 	}
+
+	mouseOut = () => {
+		this.setState({
+			hover: false,
+			overWhich: ''
+		})
+	}
+
+	isShown = (titleName) => {
+		return this.state.overWhich === titleName && this.state.hover === true
+	}
+
 	render(){
 		return (			
 			<div 
@@ -18,8 +39,8 @@ class List extends React.Component {
 				id={this.props.title} 
 				className="title" 
 				list-type={this.props.listType}
-				onMouseEnter={this.toggleHover}
-				onMouseLeave={this.toggleHover}
+				onMouseEnter={ () => this.mouseIn(this.props.title) }
+				onMouseLeave={this.mouseOut}
 			>
 				<div className='list-title'>{this.props.title}</div>
 				<img 
@@ -28,11 +49,11 @@ class List extends React.Component {
 					src={this.props.img} 
 				/>
 				<div 
-					className={`${this.props.listType==='mylist'&&this.state.hover ? 'remove' : ''} action-button`}
+					className={`${this.props.listType==='mylist'&&this.isShown(this.props.title) ? 'remove' : ''} action-button`}
 					onClick={() => {this.props.removeTitle(this.props.title, this.props.id, this.props.img)}}
 				>REMOVE FROM MY LIST</div>
 				<div 
-					className={`${this.props.listType==='recommendations'&&this.state.hover ? 'add' : ''} action-button`}
+					className={`${this.props.listType==='recommendations'&&this.isShown(this.props.title) ? 'add' : ''} action-button`}
 					onClick={() => {this.props.addToMyList(this.props.id, this.props.title, this.props.img)}}
 				>+ My List</div>
 			</div>
@@ -44,7 +65,7 @@ List.propTypes = {
 	listType: PropTypes.string,
 	title: PropTypes.string.isRequired,
 	img: PropTypes.string.isRequired,
-	hover: PropTypes.func.isRequired,
+	//hover: PropTypes.func.isRequired,
 	removeTitle: PropTypes.func,
 	addToMyList: PropTypes.func,
 }

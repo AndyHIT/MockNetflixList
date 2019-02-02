@@ -4,7 +4,7 @@ import {
 	RETRIEVE_RECOMMENDATIONS,
 	ADD_TO_MYLIST,
 	REMOVE_FROM_MYLIST,
-	SET_VISIBILITY_FILTER
+	//SET_VISIBILITY_FILTER
 } from '../actions/action.js';
 
 const titleList = (state=[], action) => {
@@ -39,20 +39,21 @@ const titleList = (state=[], action) => {
 	}
 }
 
-const visibilityFilter = (state=[], action) => {
-	switch (action.type) {
-		case SET_VISIBILITY_FILTER:
-			return {
-				...state,
-				filter: action.filter
-			}
-		default:
-			return state
-	}
-}
+// const visibilityFilter = (state=[], action) => {
+// 	switch (action.type) {
+// 		case SET_VISIBILITY_FILTER:
+// 			return {
+// 				...state,
+// 				filter: action.filter
+// 			}
+// 		default:
+// 			return state
+// 	}
+// }
 
 const reducers = combineReducers({
-	titleList, visibilityFilter
+	//titleList, visibilityFilter
+	titleList
 })
 
 export default reducers

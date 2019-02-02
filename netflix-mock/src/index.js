@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk'
 
 import reducers from './reducers/rootReducer.js';
-import { getAllTitles } from './actions/action.js';
+import { getMyListTitles, getRecommendationsTitles } from './actions/action.js';
 import App from './App';
 
 const store = createStore(
@@ -16,7 +16,8 @@ const store = createStore(
 	)
 );
 
-store.dispatch(getAllTitles());
+store.dispatch(getMyListTitles());
+store.dispatch(getRecommendationsTitles());
 
 ReactDOM.render(
 	<Provider store={store}>

@@ -11,15 +11,16 @@ class App extends Component {
 		
 		this.removeTitle = this.removeTitle.bind(this);
 		this.addToMyList = this.addToMyList.bind(this);
-		this.isHovered = this.isHovered.bind(this);
+		//this.isHovered = this.isHovered.bind(this);
 	}
 
 	compomentDidMount(){
 		const { dispatch } = this.props;
-		dispatch(actions.getAllTitles);
+		dispatch(actions.getMyListTitles());
+		dispatch(actions.getRecommendationsTitles());
 	}
 
-	isHovered(title){
+	/*isHovered(title){
 		const { titleList } = this.props;
 		for(let i=0; i<titleList.mylist.length; i++){
 			if(title === titleList.mylist[i].title){
@@ -32,18 +33,18 @@ class App extends Component {
 			}
 		}
 		return false;
-	}
+	}*/
 
 	removeTitle(title, id, img){
-		const { dispatch, mylist } = this.props;
+		const { dispatch, titleList } = this.props;
 		const item = { title, id, img };
-		dispatch(actions.removeFromList(item, mylist));
+		dispatch(actions.removeFromList(item, titleList.mylist));
 	}
 
 	addToMyList(id, title, img){
-		const { dispatch, mylist, recommendations } = this.props;
+		const { dispatch, titleList } = this.props;
 		const newTitle = { title, id, img };
-		dispatch(actions.addToList(newTitle, mylist, recommendations));
+		dispatch(actions.addToList(newTitle, titleList.mylist, titleList.recommendations));
 	}
 
 	render() {
@@ -51,27 +52,9 @@ class App extends Component {
 			<div className="App">
 				<div className="container">
 					<img className="logo" src='https://assets.nflxext.com/en_us/pages/wiplayer/logo_v3.svg' alt="NetFlix" />
-					{/*<h2 className="list-header">My List</h2>
-					<div className="list-container">
-						{
-							this.props.titleList.myList.map((title) => {
-								return (
-									<List 
-										key={title.title}
-										id={title.id}
-										title={title.title}
-										img={title.img}
-										listType='mylist'
-										hover={this.isHovered}
-										removeTitle={this.removeTitle}
-									/>
-								)
-							})
-						}
-					</div>*/}
 					<h2 className="list-header">My List</h2>
 					<div className="list-container">
-						{
+						{ (this.props.titleList !== undefined && this.props.titleList.mylist!==undefined) ? (
 							this.props.titleList.mylist.map((title) => {
 								return (
 									<List 
@@ -80,16 +63,16 @@ class App extends Component {
 										title={title.title}
 										img={title.img}
 										listType='mylist'
-										hover={this.isHovered}
+										//hover={this.isHovered}
 										removeTitle={this.removeTitle}
 									/>
 								)
 							})
-						}
+						) : ''}
 					</div>
 					<h2 className="list-header">Recommendations</h2>
 					<div className="list-container">
-						{
+						{ (this.props.titleList !== undefined && this.props.titleList.recommendations!==undefined) ? (
 							this.props.titleList.recommendations.map((title) => {
 								return (
 									<List 
@@ -98,12 +81,12 @@ class App extends Component {
 										title={title.title}
 										img={title.img}
 										listType='recommendations'
-										hover={this.isHovered}
+										//hover={this.isHovered}
 										addToMyList={this.addToMyList}
 									/>
 								)
 							})
-						}
+						) : ''}
 					</div>
 				</div>
 			</div>		
@@ -112,6 +95,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
+	console.log(state);
 	return { ...state };
 }
 

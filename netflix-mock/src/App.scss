@@ -33,6 +33,9 @@ body{
 						color: #fff;
 						margin-bottom: 10px;
 					}
+					.list-image{
+						height: 230px;
+					}
 					.action-button{
 						display: none;
 					    width: 100px;
@@ -48,7 +51,6 @@ body{
 					    }
 					    &:hover{
 					    	cursor: pointer;
-							opacity: 0.5;
 						}
 					}
 				}
