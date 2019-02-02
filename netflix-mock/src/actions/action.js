@@ -2,7 +2,6 @@ export const RETRIEVE_MYLIST = 'RETRIEVE_MYLIST';
 export const RETRIEVE_RECOMMENDATIONS = 'RETRIEVE_RECOMMENDATIONS';
 export const ADD_TO_MYLIST = 'ADD_TO_MYLIST';
 export const REMOVE_FROM_MYLIST = 'REMOVE_FROM_MYLIST';
-//export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
 function sendMyListTitlesToReducer(titles) {
 	return {
@@ -66,12 +65,5 @@ export function removeFromList(title, mylist){
 		mylist
 	}
 }
-
-// export function setVisibilityFilter(filter){
-// 	return {
-// 		type: SET_VISIBILITY_FILTER,
-// 		filter
-// 	}
-// }
 
 export default { getMyListTitles, getRecommendationsTitles, addToList, removeFromList };

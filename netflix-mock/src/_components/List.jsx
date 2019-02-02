@@ -65,7 +65,6 @@ List.propTypes = {
 	listType: PropTypes.string,
 	title: PropTypes.string.isRequired,
 	img: PropTypes.string.isRequired,
-	//hover: PropTypes.func.isRequired,
 	removeTitle: PropTypes.func,
 	addToMyList: PropTypes.func,
 }
