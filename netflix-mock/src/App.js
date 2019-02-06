@@ -36,23 +36,6 @@ class App extends Component {
 			<div className="App">
 				<div className="container">
 					<img className="logo" src='https://assets.nflxext.com/en_us/pages/wiplayer/logo_v3.svg' alt="NetFlix" />
-					<h2 className="list-header">My List</h2>
-					<div className="list-container">
-						{ (this.props.titleList !== undefined && this.props.titleList.mylist!==undefined) ? (
-							this.props.titleList.mylist.map((title) => {
-								return (
-									<List 
-										key={title.title}
-										id={title.id}
-										title={title.title}
-										img={title.img}
-										listType='mylist'
-										removeTitle={this.removeTitle}
-									/>
-								)
-							})
-						) : ''}
-					</div>
 					<h2 className="list-header">Recommendations</h2>
 					<div className="list-container">
 						{ (this.props.titleList !== undefined && this.props.titleList.recommendations!==undefined) ? (
@@ -65,6 +48,23 @@ class App extends Component {
 										img={title.img}
 										listType='recommendations'
 										addToMyList={this.addToMyList}
+									/>
+								)
+							})
+						) : ''}
+					</div>
+					<h2 className="list-header">My List</h2>
+					<div className="list-container">
+						{ (this.props.titleList !== undefined && this.props.titleList.mylist!==undefined) ? (
+							this.props.titleList.mylist.map((title) => {
+								return (
+									<List 
+										key={title.title}
+										id={title.id}
+										title={title.title}
+										img={title.img}
+										listType='mylist'
+										removeTitle={this.removeTitle}
 									/>
 								)
 							})
