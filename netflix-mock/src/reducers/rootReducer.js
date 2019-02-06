@@ -31,7 +31,8 @@ const titleList = (state=[], action) => {
 				...state,
 				mylist: state.mylist.filter(mylist => 
 					mylist.title !== action.title.title
-				)
+				),
+				recommendations: [...state.recommendations, action.title],
 			}
 		default:
 			return {...state}

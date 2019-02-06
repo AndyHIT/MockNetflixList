@@ -51,11 +51,11 @@ class List extends React.Component {
 				<div 
 					className={`${this.props.listType==='mylist'&&this.isShown(this.props.title) ? 'remove' : ''} action-button`}
 					onClick={() => {this.props.removeTitle(this.props.title, this.props.id, this.props.img)}}
-				>REMOVE FROM MY LIST</div>
+				>remove</div>
 				<div 
 					className={`${this.props.listType==='recommendations'&&this.isShown(this.props.title) ? 'add' : ''} action-button`}
 					onClick={() => {this.props.addToMyList(this.props.id, this.props.title, this.props.img)}}
-				>+ My List</div>
+				>add</div>
 			</div>
 		)
 	}
