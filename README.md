@@ -39,7 +39,8 @@ Please create a git repository and push the code there and send across the link 
          "img": "http://cdn0.nflximg.net/webp/3200/9163200.webp"
       }
    ]
-}```
+}
+```
 
 The top row will be the "My List" row and will display the titles included in "mylist" array. 
 The second row will be the recommendation row which "recommendations" array. 
