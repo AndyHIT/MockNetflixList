@@ -1,7 +1,5 @@
 # MockNetflixList
 
-PLEASE DO IT IN REACT AND REDUX
-
 Please create a git repository and push the code there and send across the link when complete. The task is to create a mock Netflix like page with editable rows of titles using any framework you want (preferably React). You are given the following JSON object which will serve as mock backend data: 
 
 ```{
